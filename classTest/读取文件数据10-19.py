@@ -31,7 +31,7 @@ try:
     man_file=open('file/man_data.txt','w')
     other_file=open('file/other_data.txt','w')
     # print(man,file=man_file)
-    # print(other,file=other_file)     //仅支持python2.7
+    # print(other,file=other_file)     //仅支持python3+
     for i in range(len(man)):
         man_file.write(man[i])
     for j in range(len(other)):
@@ -50,3 +50,56 @@ except IOError:
 #数据文件存在丢失情况
 #try/except机制
 """try语句提供一个途径，可以运行时系统地处理异常和错误。"""
+
+
+
+
+
+"""创建一个sanitize()函数，这个函数从各个选手的列表接收一个字符串作为输入，
+然后处理这个字符串，将找到的所有短横线或冒号替换成为一个点号，并返回清理过的字符串，
+已经包含一个点号，则不需要再做处理。"""
+def sanitize(time_string):
+    if '-' in time_string:
+        splitter='-'
+        (mins, secs) = time_string.split(splitter)
+    elif ':' in time_string:
+        splitter=':'
+        (mins, secs) = time_string.split(splitter)
+    else:
+        return time_string
+    return(mins+'.'+secs)
+
+
+"""从各个文件将数据读入各自的列表。编写一个小程序，处理各个文件，为各个选手的数据分别创建一个列表，并在屏幕上显示这些列表"""
+# with open('file/a.txt') as a:#打开一个文件
+#     data=a.readline()        #读取数据行
+#     janes=data.strip().split(',') #将数据转换为一个列表
+def get_coach_data(filename):
+    try:
+        with open(filename) as f:
+            data=f.readline()
+        return(data.strip().split(','))
+    except IOError as ioerr:
+        print("file error:"+str(ioerr))
+        return(None)
+janes=get_coach_data('file/a.txt')
+# clean_janes=[]
+# for each_t in janes:
+#     clean_janes.append(sanitize(each_t))
+#利用列表推导实现
+clean_janes=[set(sanitize(each_t) for each_t in janes)]
+cleans_janes=[sanitize(each_t) for each_t in janes]
+print(cleans_janes)
+print(sorted(clean_janes))
+
+#剔除数据中重复的值，并取前三个
+unique_janes=[]
+for each_t in clean_janes:
+    if each_t not in unique_janes:
+        unique_janes.append(each_t)
+print unique_janes
+print(unique_janes[0:3])
+
+
+L=[('b',2),('a',1),('c',3),('d',4)]
+print sorted(L, cmp=lambda x,y:cmp(x[1],y[1]))
