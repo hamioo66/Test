@@ -32,6 +32,7 @@ import os
 desired_caps = {
                'platformName': 'Android',
                'deviceName': '8ac7d424',
+               # 'deviceName': 'PBV7N16C20000414',
                'platformVersion': '4.4.4',
                'appPackage': 'com.yiyaotong.hurryfirewholesale',
                'appActivity': 'com.yiyaotong.hurryfirewholesale.ui.GuideActivity',

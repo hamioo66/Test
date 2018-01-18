@@ -15,6 +15,7 @@ class Account(object):
     #登录方法
     def do_login_as(user_info):
         driver.find_element_by_id("loginBlock")
+        driver.find_element_by_id('account-box').click()
         driver.find_element_by_css_selector("input[placeholder='邮箱帐号或手机号']").clear()
         driver.find_element_by_css_selector("input[placeholder='邮箱帐号或手机号']").send_keys(user_info.username)
         driver.find_element_by_css_selector("input[placeholder='密码']").clear()

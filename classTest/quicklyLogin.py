@@ -20,12 +20,12 @@ driver.maximize_window()
 # driver.find_element_by_name('password').send_keys(u"123456")
 # driver.find_element_by_name('telphone').send_keys(u"18888888888")
 s=Select(driver.find_element_by_class_name("selectpicker"))
-s.select_by_value('2')
+s.select_by_value('1')
 # for select in s.options:
 #     print select.text
 # driver.find_element_by_class_name("selectpicker").find_elements_by_tag_name("option")[2].click()
-username=i[1].split(',')[0]
-password=i[1].split(',')[1]
+username=i[0].split(',')[0]
+password=i[0].split(',')[1]
 driver.find_element_by_name('telphone').send_keys(username)
 driver.find_element_by_name('password').send_keys(password)
 # driver.find_element_by_name('loginBtn').click()
