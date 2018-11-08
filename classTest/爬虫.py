@@ -19,7 +19,7 @@ soup_string
 # for s in span:
 #     print s
 
-res = urllib.urlopen("http://www.douban.com/tag/%E5%B0%8F%E8%AF%B4/?focus=book")
+res = urllib.urlopen("https://www.douban.com/tag/小说/?source=index")
 soup = BeautifulSoup(res, "html.parser")
 book_div = soup.find(attrs={"id": "book"})
 book_a = book_div.findAll(attrs={"class": "title"})
