@@ -44,3 +44,6 @@ r1 = requests.get('https://github.com/favicon.ico')
 with open('favicon.ico','wb') as f:
     f.write(r.content)
 
+data = {'name':'germery','age':'22'}
+r2 = requests.post("http://httpbin.org/post",data=data)
+print(r2.text)
